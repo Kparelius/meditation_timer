@@ -1,17 +1,30 @@
+
+var tone = new Audio("bong.mp3");
+
 var meditation = function(){
 
-  var rawTime = document.getElementById("totaltime").val();
+  var chosenTime;
+  var seconds = 0;
+  var rawTime = document.getElementById("chosenTime").value;
+  seconds = rawTime * 60;
 
-  var convertTimeToMs = function(rawTime){
+  var preTimer = window.setTimeout(function(){
+    tone.play();
+    countDown();
+    }, 10000);
 
+  var countDown = function(){
+    var eachSecond = setInterval(function(){
+        seconds -= 1;
+        console.log(seconds);
+        if (seconds <=0){
+          clearInterval(eachSecond);
+          tone.play();
+        };
+    }, 1000);
   };
-
-  var countdown = function (totalTime){
-    for()
-  };
-
 };
 
-$("#button").click(function{
+$("#startButton").click(function(){
   meditation();
 });
